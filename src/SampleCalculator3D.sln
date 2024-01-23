@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33513.286
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator3D", "Calculator3D\Calculator3D.csproj", "{47420BC4-B68C-4DC3-99ED-470C472D31EE}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Calculator3D.Browser", "Calculator3D.Browser\Calculator3D.Browser.csproj", "{511855A4-4DF4-4A3C-BDB1-29C2BE1F5594}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{47420BC4-B68C-4DC3-99ED-470C472D31EE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47420BC4-B68C-4DC3-99ED-470C472D31EE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47420BC4-B68C-4DC3-99ED-470C472D31EE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47420BC4-B68C-4DC3-99ED-470C472D31EE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{511855A4-4DF4-4A3C-BDB1-29C2BE1F5594}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{511855A4-4DF4-4A3C-BDB1-29C2BE1F5594}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{511855A4-4DF4-4A3C-BDB1-29C2BE1F5594}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{511855A4-4DF4-4A3C-BDB1-29C2BE1F5594}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F14F7938-7F52-40C4-B99C-A9B403F4E6C0}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,184 @@
+﻿<sdk:Page x:Class="Calculator3D.MainPage"
+          xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+          xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+          xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+          xmlns:local="clr-namespace:Calculator3D"
+          xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+          xmlns:sdk="http://schemas.microsoft.com/winfx/2006/xaml/presentation/sdk"
+          xmlns:xr="http://xrsharp.io/xr"
+          xmlns:ei="http://schemas.microsoft.com/expression/2010/interactions"
+          xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+          mc:Ignorable="d">
+    <sdk:Page.Resources>
+
+        <Color x:Key="ButtonsBackground1">#ff2a9d8f</Color>
+        <Color x:Key="ButtonsBackground2">#ffe9c46a</Color>
+        <Color x:Key="ButtonsBackground3">#fff4a261</Color>
+        <Color x:Key="ButtonsBackground4">#ffe76f51</Color>
+        <Color x:Key="ButtonsTextColor">#FFBBBBBB</Color>
+        <Color x:Key="CalculatorColor">#ff264653</Color>
+        <Color x:Key="DisplayBoxForeground">#FFBBBBBB</Color>
+
+    </sdk:Page.Resources>
+
+    <xr:Root3D
+        Name="root3D"
+        
+        CameraFov="17.5"
+        IsEmbedded="True"
+        EnterXR="OnEnterXR"
+        ExitXR="OnExitXR"
+        
+        xr:OrbitControls.Enabled="True"
+        xr:OrbitControls.InitialPosition="0 0 0"
+        xr:OrbitControls.Target="0 0 1"
+        xr:OrbitControls.DisplayTarget="False"
+        
+        xr:Renderer.PhysicallyCorrectLights="True"
+        xr:Renderer.Antialias="False"
+        xr:Effect.EnableRenderPass="False">
+
+        <xr:Root3D.Lights>
+            <xr:AmbientLight Intensity="0"/>
+            <!--<xr:DirectionalLight Intensity="0.6" CastShadows="False" ShadowCameraFar="3" ShadowBias="0.003" ShadowMapWidth="2048" ShadowMapHeight="2048"
+                                 xr:Canvas3D.X="-0.5" xr:Canvas3D.Y="1" xr:Canvas3D.Z="1"/>-->
+        </xr:Root3D.Lights>
+
+        <xr:Root3D.Effects>
+            <xr:SSGIEffect DenoiseDiffuse="25"
+                           DenoiseKernel="3"
+                           DenoiseSpecular="25.54"
+                           DepthPhi="6.522"
+                           Distance="5"
+                           EnvBlur="0.8"
+                           LumaPhi="25.543"
+                           NormalPhi="40.217"
+                           Phi="0.1"
+                           Radius="16"
+                           RefineSteps="4"
+                           RoughnessPhi="28.261"
+                           SpecularPhi="2.772"
+                           Steps="20"
+                           Thickness="3"/>
+            <xr:SMAAEffect/>
+        </xr:Root3D.Effects>
+        <xr:Canvas3D>
+            <xr:Canvas3D.Resources>
+                <Style x:Key="Button3D_Style" TargetType="xr:Button3D">
+                    <Setter Property="xr:Canvas3D.Z" Value="0.005"/>
+                    <Setter Property="SizeX" Value="0.03"/>
+                    <Setter Property="SizeY" Value="0.03"/>
+                    <Setter Property="SizeZ" Value="0.01"/>
+                    <Setter Property="Background" Value="{StaticResource ButtonsBackground1}"/>
+                    <Setter Property="Foreground" Value="{StaticResource ButtonsTextColor}"/>
+                    <Setter Property="FontSize" Value="18"/>
+                    <Setter Property="Padding" Value="0.005"/>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="xr:Button3D">
+                                <xr:Grid3D>
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="MouseEnter">
+                                            <ei:ChangePropertyAction TargetObject="{Binding ElementName=BackgroundBox}" PropertyName="Color">
+                                                <ei:ChangePropertyAction.Value>
+                                                    <Color>#3A3A50</Color>
+                                                </ei:ChangePropertyAction.Value>
+                                            </ei:ChangePropertyAction>
+                                        </i:EventTrigger>
+                                        <i:EventTrigger EventName="MouseLeave">
+                                            <ei:ChangePropertyAction TargetObject="{Binding ElementName=BackgroundBox}" PropertyName="Color" Value="{TemplateBinding Background}"/>
+                                        </i:EventTrigger>
+                                        <ei:DataTrigger Binding="{TemplateBinding IsPressed}" Value="True">
+                                            <ei:ChangePropertyAction PropertyName="Scale" Value="1 1 0.2"/>
+                                        </ei:DataTrigger>
+                                        <ei:DataTrigger Binding="{TemplateBinding IsPressed}" Value="False">
+                                            <ei:ChangePropertyAction PropertyName="Scale" Value="1"/>
+                                        </ei:DataTrigger>
+                                    </i:Interaction.Triggers>
+                                    <xr:RoundedBox SizeX="{TemplateBinding SizeX}"
+                                                   SizeY="{TemplateBinding SizeY}"
+                                                   SizeZ="{TemplateBinding SizeZ}"
+                                                   x:Name="BackgroundBox"       
+                                                   Radius="0.003"
+                                                   xr:StandardMaterial.Metalness="0.06"
+                                                   xr:StandardMaterial.Roughness="0.1"
+                                                   Color="{TemplateBinding Background}">
+                                    </xr:RoundedBox>
+                                    <xr:Text3D
+                                                    FontSize="0.015"
+                                                    Thickness="0.002"
+                                                    Text="{TemplateBinding Content}"
+                                                    Margin="{TemplateBinding Padding}"
+                                                    Color="White"
+                                                    xr:Canvas3D.X="-0.004"
+                                                    xr:Canvas3D.Y="-0.005"
+                                                    xr:Canvas3D.Z="0.006"
+                                                    AlignmentX="Center"
+                                                    AlignmentY="Center"
+                                                    AlignmentZ="Center">
+                                        <xr:Text3D.Material>
+                                            <xr:StandardMaterial EmissiveColor="White" EmissiveIntensity="500"/>
+                                        </xr:Text3D.Material>
+                                    </xr:Text3D>
+                                </xr:Grid3D>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+
+                <!-- Implicit style to automatically apply the style to all the Button3D controls (note: please ignore the designer errors) -->
+                <Style TargetType="xr:Button3D" BasedOn="{StaticResource Button3D_Style}"/>
+
+            </xr:Canvas3D.Resources>
+            <xr:Canvas3D Name="Calculator"
+                         xr:Canvas3D.X="-0.08" xr:Canvas3D.Y="-0.1" xr:Canvas3D.Z="-1" xr:Canvas3D.IsDraggable="True"
+                         Scale="1"
+                         Rotation="-25 0 0">
+                <xr:Canvas3D xr:Canvas3D.Y="0.058" xr:Canvas3D.Z="-0.036" Scale="1 1.5 1" Rotation="53 0 0">
+                    <xr:RoundedBox Color="{StaticResource CalculatorColor}" xr:Canvas3D.X="0.065" SizeX="0.185" SizeY="0.041" SizeZ="0.02"
+                                   Radius="0.01" xr:StandardMaterial.Metalness="0.5" xr:StandardMaterial.Roughness="0.1" ReceiveShadows="False"/>
+                    <xr:TextBlock3D x:Name="DisplayBox"
+                                  Visibility="Collapsed"
+                                  Margin="0.005"
+                                  SizeX="0.3"
+                                  AlignmentX="End"
+                                  FontSize="32"
+                                  Foreground="{StaticResource DisplayBoxForeground}"
+                                  Text="23.5"/>
+                </xr:Canvas3D>
+                <xr:Button3D Name="BC" xr:Canvas3D.Y="0.1725" Background="{StaticResource ButtonsBackground2}" Click="OperBtn_Click" Content="C"/>
+                <xr:Button3D Name="BCE" xr:Canvas3D.Y="0.14" Background="{StaticResource ButtonsBackground4}" Click="OperBtn_Click" Content="CE"/>
+                <xr:Button3D Name="B7" xr:Canvas3D.X="0.0325" xr:Canvas3D.Y="0.1725" Click="DigitBtn_Click" Content="7"/>
+                <xr:Button3D Name="B8" xr:Canvas3D.X="0.065" xr:Canvas3D.Y="0.1725" Click="DigitBtn_Click" Content="8"/>
+                <xr:Button3D Name="B9" xr:Canvas3D.X="0.0975" xr:Canvas3D.Y="0.1725" Click="DigitBtn_Click" Content="9"/>
+                <xr:Button3D Name="B4" xr:Canvas3D.X="0.0325" xr:Canvas3D.Y="0.14" Click="DigitBtn_Click" Content="4"/>
+                <xr:Button3D Name="B5" xr:Canvas3D.X="0.065" xr:Canvas3D.Y="0.14" Click="DigitBtn_Click" Content="5"/>
+                <xr:Button3D Name="B6" xr:Canvas3D.X="0.0975" xr:Canvas3D.Y="0.14" Click="DigitBtn_Click" Content="6"/>
+                <xr:Button3D Name="B1" xr:Canvas3D.X="0.0325" xr:Canvas3D.Y="0.1075" Click="DigitBtn_Click" Content="1"/>
+                <xr:Button3D Name="B2" xr:Canvas3D.X="0.065" xr:Canvas3D.Y="0.1075" Click="DigitBtn_Click" Content="2"/>
+                <xr:Button3D Name="B3" xr:Canvas3D.X="0.0975" xr:Canvas3D.Y="0.1075" Click="DigitBtn_Click" Content="3"/>
+                <xr:Button3D Name="B0" xr:Canvas3D.X="0.049" xr:Canvas3D.Y="0.075" SizeX="0.063" Background="{StaticResource ButtonsBackground1}" Click="DigitBtn_Click" Content="0"/>
+                <xr:Button3D Name="BPeriod" xr:Canvas3D.X="0.0975" xr:Canvas3D.Y="0.075" Background="{StaticResource ButtonsBackground3}" Click="DigitBtn_Click" Content="."/>
+                <xr:Button3D Name="BDevide" xr:Canvas3D.X="0.13" xr:Canvas3D.Y="0.1725" Background="{StaticResource ButtonsBackground4}" Click="OperBtn_Click" Content="/"/>
+                <xr:Button3D Name="BMultiply" xr:Canvas3D.X="0.13" xr:Canvas3D.Y="0.14" Background="{StaticResource ButtonsBackground4}" Click="OperBtn_Click" Content="×"/>
+                <xr:Button3D Name="BMinus" xr:Canvas3D.X="0.13" xr:Canvas3D.Y="0.1075" Background="{StaticResource ButtonsBackground4}" Click="OperBtn_Click" Content="-"/>
+                <xr:Button3D Name="BPlus" xr:Canvas3D.X="0.13" xr:Canvas3D.Y="0.075" Background="{StaticResource ButtonsBackground4}" Click="OperBtn_Click" Content="+"/>
+                <xr:Button3D Name="BEqual" xr:Canvas3D.X="0.0813" xr:Canvas3D.Y="0.0425" SizeX="0.1275" Background="{StaticResource ButtonsBackground2}" Click="OperBtn_Click" Content="=" FontSize="30"/>
+                <xr:Button3D Name="BSqrt" xr:Canvas3D.Y="0.1075" Background="{StaticResource ButtonsBackground3}" Click="OperBtn_Click" Content="√"/>
+                <xr:Button3D Name="BOneOver" xr:Canvas3D.Y="0.075" Background="{StaticResource ButtonsBackground3}" Click="OperBtn_Click" Content="1/x"/>
+                <xr:Button3D Name="BPM" xr:Canvas3D.Y="0.0425" Background="{StaticResource ButtonsBackground3}" Click="OperBtn_Click" Content="+/-"/>
+
+                <xr:RoundedBox Color="{StaticResource CalculatorColor}" SizeX="0.185" SizeY="0.185" SizeZ="0.02" xr:StandardMaterial.Metalness="0.5" xr:StandardMaterial.Roughness="0.1"
+                               xr:Canvas3D.X="0.065" xr:Canvas3D.Y="0.107" xr:Canvas3D.Z="-0.0025" Radius="0.01"/>
+            </xr:Canvas3D>
+
+            <xr:Plane xr:Canvas3D.Z="-1.25" xr:Canvas3D.Y="-0.09" Rotation="-90 0 0" SizeX="2" SizeY="1">
+                <xr:Plane.Material>
+                    <xr:StandardMaterial Color="White" Metalness="0" Roughness="0.1" MapSource="/Assets/textures/wood4K.png"/>
+                </xr:Plane.Material>
+            </xr:Plane>
+            <!--<xr:Sky Color="White"/>-->
+        </xr:Canvas3D>
+    </xr:Root3D>
+
+</sdk:Page>

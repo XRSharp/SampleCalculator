@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <EnableDefaultItems>false</EnableDefaultItems>
+	  <LangVersion>11</LangVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenSilver" Version="2.1.0-preview-2024-01-15-105328-fb4cdf32" />
+    <PackageReference Include="XRSharp" Version="0.1.6-preview-2024-01-15-140021-8d48e59d" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="App.xaml.cs" />
+    <Compile Include="MainPage.xaml.cs" />
+    <Compile Include="PaperTrail.cs" />
+    <Compile Include="Temp\CameraAnimation.cs" />
+    <Compile Include="Temp\CameraOptions.cs" />
+    <Compile Include="Temp\LightFormerEnvironment2.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\textures\wood2K.png" />
+    <Content Include="Assets\textures\wood4K.png" />
+    <Content Include="Assets\textures\wood1K.png" />
+  </ItemGroup>
+  
+</Project>
