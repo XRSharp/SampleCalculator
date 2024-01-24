@@ -25,7 +25,7 @@
         Name="root3D"
         
         CameraFov="17.5"
-        IsEmbedded="True"
+        IsEmbedded="False"
         EnterXR="OnEnterXR"
         ExitXR="OnExitXR"
         
