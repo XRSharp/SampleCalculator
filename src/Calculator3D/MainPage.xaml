@@ -17,7 +17,7 @@
         <Color x:Key="ButtonsBackground4">#ffe76f51</Color>
         <Color x:Key="ButtonsTextColor">#FFBBBBBB</Color>
         <Color x:Key="CalculatorColor">#ff264653</Color>
-        <Color x:Key="DisplayBoxForeground">#FFBBBBBB</Color>
+        <Color x:Key="DisplayBoxForeground">#FF01E2FF</Color>
 
     </sdk:Page.Resources>
 
@@ -137,15 +137,21 @@
                 <xr:Canvas3D xr:Canvas3D.Y="0.058" xr:Canvas3D.Z="-0.036" Scale="1 1.5 1" Rotation="53 0 0">
                     <xr:RoundedBox Color="{StaticResource CalculatorColor}" xr:Canvas3D.X="0.065" SizeX="0.185" SizeY="0.041" SizeZ="0.02"
                                    Radius="0.01" xr:StandardMaterial.Metalness="0.5" xr:StandardMaterial.Roughness="0.1" ReceiveShadows="False"/>
-                    <xr:TextBlock3D x:Name="DisplayBox"
-                                  Visibility="Collapsed"
-                                  Margin="0.005"
-                                  SizeX="0.3"
-                                  AlignmentX="End"
-                                  FontSize="32"
-                                  Foreground="{StaticResource DisplayBoxForeground}"
-                                  Text="23.5"/>
                 </xr:Canvas3D>
+                <xr:Text3D x:Name="DisplayBox"
+                        xr:Canvas3D.X="0"
+                        xr:Canvas3D.Y="0.215"
+                        xr:Canvas3D.Z="0.01"
+                        Thickness="0.0001"
+                        Margin="0.005"
+                        SizeX="0.3"
+                        AlignmentX="End"
+                        FontSize="0.015"
+                        Text="23.5">
+                    <xr:Text3D.Material>
+                        <xr:StandardMaterial EmissiveColor="{StaticResource DisplayBoxForeground}" EmissiveIntensity="500"/>
+                    </xr:Text3D.Material>
+                </xr:Text3D>
                 <xr:Button3D Name="BC" xr:Canvas3D.Y="0.1725" Background="{StaticResource ButtonsBackground2}" Click="OperBtn_Click" Content="C"/>
                 <xr:Button3D Name="BCE" xr:Canvas3D.Y="0.14" Background="{StaticResource ButtonsBackground4}" Click="OperBtn_Click" Content="CE"/>
                 <xr:Button3D Name="B7" xr:Canvas3D.X="0.0325" xr:Canvas3D.Y="0.1725" Click="DigitBtn_Click" Content="7"/>
@@ -168,8 +174,8 @@
                 <xr:Button3D Name="BOneOver" xr:Canvas3D.Y="0.075" Background="{StaticResource ButtonsBackground3}" Click="OperBtn_Click" Content="1/x"/>
                 <xr:Button3D Name="BPM" xr:Canvas3D.Y="0.0425" Background="{StaticResource ButtonsBackground3}" Click="OperBtn_Click" Content="+/-"/>
 
-                <xr:RoundedBox Color="{StaticResource CalculatorColor}" SizeX="0.185" SizeY="0.185" SizeZ="0.02" xr:StandardMaterial.Metalness="0.5" xr:StandardMaterial.Roughness="0.1"
-                               xr:Canvas3D.X="0.065" xr:Canvas3D.Y="0.107" xr:Canvas3D.Z="-0.0025" Radius="0.01"/>
+                <xr:RoundedBox Color="{StaticResource CalculatorColor}" SizeX="0.185" SizeY="0.24" SizeZ="0.02" xr:StandardMaterial.Metalness="0.5" xr:StandardMaterial.Roughness="0.1"
+                               xr:Canvas3D.X="0.065" xr:Canvas3D.Y="0.133" xr:Canvas3D.Z="-0.0025" Radius="0.01"/>
             </xr:Canvas3D>
 
             <xr:Plane xr:Canvas3D.Z="-1.25" xr:Canvas3D.Y="-0.09" Rotation="-90 0 0" SizeX="2" SizeY="1">
