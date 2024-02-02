@@ -36,9 +36,9 @@ namespace Calculator3D
             await Task.Delay(500);
             _cameraAnimation.Animate(new CameraOptions()
             {
-                Position = new Point3D(0, 0, 0),
+                Position = new Point3D(-0.3, 0.2, 0),
                 Rotation = new Point3D(0, 0, 0),
-                TargetPoint = new Point3D(0, 0, -1)
+                TargetPoint = new Point3D(0, 0.02, -1)
             });
         }
 

@@ -40,10 +40,16 @@
 
         <xr:Root3D.Lights>
             <xr:AmbientLight Intensity="0"/>
-            <!--<xr:DirectionalLight Intensity="0.6" CastShadows="False" ShadowCameraFar="3" ShadowBias="0.003" ShadowMapWidth="2048" ShadowMapHeight="2048"
-                                 xr:Canvas3D.X="-0.5" xr:Canvas3D.Y="1" xr:Canvas3D.Z="1"/>-->
+            <xr:DirectionalLight Intensity="2" CastShadows="True" ShadowCameraFar="3" ShadowBias="0.003" ShadowMapWidth="2048" ShadowMapHeight="2048"
+                                 xr:Canvas3D.X="0.5" xr:Canvas3D.Y="1" xr:Canvas3D.Z="1"/>
+            <xr:DirectionalLight Intensity="1" CastShadows="True" ShadowCameraFar="3" ShadowBias="0.003" ShadowMapWidth="2048" ShadowMapHeight="2048"
+                     xr:Canvas3D.X="0.215" xr:Canvas3D.Y="0.830" xr:Canvas3D.Z="-1.2"/>
         </xr:Root3D.Lights>
 
+        <!--<xr:Root3D.Environment>
+            <local:LightFormerEnvironment2 Intensity="0.01"/>
+        </xr:Root3D.Environment>-->
+        
         <xr:Root3D.Effects>
             <xr:SSGIEffect DenoiseDiffuse="25"
                            DenoiseKernel="3"
@@ -136,7 +142,7 @@
                          Rotation="-25 0 0">
                 <xr:Canvas3D xr:Canvas3D.Y="0.058" xr:Canvas3D.Z="-0.036" Scale="1 1.5 1" Rotation="53 0 0">
                     <xr:RoundedBox Color="{StaticResource CalculatorColor}" xr:Canvas3D.X="0.065" SizeX="0.185" SizeY="0.041" SizeZ="0.02"
-                                   Radius="0.01" xr:StandardMaterial.Metalness="0.5" xr:StandardMaterial.Roughness="0.1" ReceiveShadows="False"/>
+                                   Radius="0.01" xr:StandardMaterial.Metalness="0.5" xr:StandardMaterial.Roughness="0.1" CastShadows="True" ReceiveShadows="True"/>
                 </xr:Canvas3D>
                 <xr:Text3D x:Name="DisplayBox"
                         xr:Canvas3D.X="0"
@@ -175,10 +181,27 @@
                 <xr:Button3D Name="BPM" xr:Canvas3D.Y="0.0425" Background="{StaticResource ButtonsBackground3}" Click="OperBtn_Click" Content="+/-"/>
 
                 <xr:RoundedBox Color="{StaticResource CalculatorColor}" SizeX="0.185" SizeY="0.24" SizeZ="0.02" xr:StandardMaterial.Metalness="0.5" xr:StandardMaterial.Roughness="0.1"
-                               xr:Canvas3D.X="0.065" xr:Canvas3D.Y="0.133" xr:Canvas3D.Z="-0.0025" Radius="0.01"/>
+                               xr:Canvas3D.X="0.065" xr:Canvas3D.Y="0.133" xr:Canvas3D.Z="-0.0025" Radius="0.01" CastShadows="True" ReceiveShadows="True"/>
+
+                <xr:Text3D
+                    FontSize="1.5"
+                    Thickness="0.002"
+                    Text="O"
+                    Color="White"
+                    xr:Canvas3D.X="-0.55"
+                    xr:Canvas3D.Y="-0.14"
+                    xr:Canvas3D.Z="0.35"
+                    Rotation="-65 0 0"
+                    AlignmentX="Center"
+                    AlignmentY="Center"
+                    AlignmentZ="Center">
+                    <xr:Text3D.Material>
+                        <xr:StandardMaterial EmissiveColor="White" EmissiveIntensity="1000"/>
+                    </xr:Text3D.Material>
+                </xr:Text3D>
             </xr:Canvas3D>
 
-            <xr:Plane xr:Canvas3D.Z="-1.25" xr:Canvas3D.Y="-0.09" Rotation="-90 0 0" SizeX="2" SizeY="1">
+            <xr:Plane xr:Canvas3D.Z="-1.25" xr:Canvas3D.Y="-0.09" Rotation="-90 0 0" SizeX="2" SizeY="1.5" ReceiveShadows="True">
                 <xr:Plane.Material>
                     <xr:StandardMaterial Color="White" Metalness="0" Roughness="0.1" MapSource="/Assets/textures/wood4K.png"/>
                 </xr:Plane.Material>
