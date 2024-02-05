@@ -36,7 +36,7 @@
         
         xr:Renderer.PhysicallyCorrectLights="True"
         xr:Renderer.Antialias="False"
-        xr:Effect.EnableRenderPass="False">
+        xr:Effect.EnableRenderPass="True">
 
         <xr:Root3D.Lights>
             <xr:AmbientLight Intensity="0"/>
